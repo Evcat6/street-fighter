@@ -36,15 +36,17 @@ function createHealthIndicators(leftFighter, rightFighter) {
 }
 
 function createHealthIndicator(fighter, position) {
-  const { name } = fighter;
+  const { name, health } = fighter;
   const container = createElement({ tagName: 'div', className: 'arena___fighter-indicator' });
   const fighterName = createElement({ tagName: 'span', className: 'arena___fighter-name' });
   const indicator = createElement({ tagName: 'div', className: 'arena___health-indicator' });
   const bar = createElement({ tagName: 'div', className: 'arena___health-bar', attributes: { id: `${position}-fighter-indicator` }});
+  const indicatorBar = createElement({ tagName: 'span', className: 'arena___health-title', attributes: { id: `${position}-arena___health-title` }})
+  indicatorBar.innerText = health;
 
   fighterName.innerText = name;
   indicator.append(bar);
-  container.append(fighterName, indicator);
+  container.append(fighterName, indicator, indicatorBar);
 
   return container;
 }

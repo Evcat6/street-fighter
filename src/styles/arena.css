@@ -61,3 +61,28 @@
   width: 100%;
   background-color: #ebd759;
 }
+
+
+.arena___health-title {
+  color: #ebd759;
+  text-align: end;
+  width: 80%;
+  margin-top: 5px;
+  letter-spacing: 0.8px;
+  -webkit-text-stroke: 1.3px black;
+  font-size: 30px;
+  font-weight: 900;
+  font-family: 'Fredoka One';
+  font-style: normal;
+  font-weight: 400;
+}
+
+#left-arena___health-title {
+  display: flex;
+  justify-content: flex-start;
+  text-align: start;
+}
+
+#left-arena___health-title #left {
+  text-align: end;
+}
