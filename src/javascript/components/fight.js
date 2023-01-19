@@ -2,38 +2,38 @@ import { controls } from '../../constants/controls';
 
 export async function fight(firstFighter, secondFighter) {
   return new Promise((resolve) => {
-    const healthBarsHTML = document.getElementsByClassName('arena___health-bar');
-    const healthBarsTitleHTML = document.getElementsByClassName('arena___health-title');
+    const healthBarsHTML = document.getElementsByClassName("arena___health-bar");
+    const healthBarsTitleHTML = document.getElementsByClassName("arena___health-title");
     const healthBarsTitleArray = [...healthBarsTitleHTML];
-    const healthBarsArray = [ ...healthBarsHTML ];
-    const statusViewHTML = document.getElementsByClassName('arena___health-indicator');
-    const statusViewsArray = [ ...statusViewHTML ];
-    
+    const healthBarsArray = [...healthBarsHTML];
+    const statusViewHTML = document.getElementsByClassName("arena___health-indicator");
+    const statusViewsArray = [...statusViewHTML];
+
     const gameStatus = {
       currentHealth: 100,
       criticalDamageChecker: Date.now(),
       block: false,
-      keyCombination: [],  
+      keyCombination: [],
     };
-    
+
     const FighterOne = {
-      ...firstFighter, 
-      ...gameStatus, 
-      healthBar: healthBarsArray[0], 
+      ...firstFighter,
+      ...gameStatus,
+      healthBar: healthBarsArray[0],
       healthBarValue: healthBarsTitleArray[0],
       healthBarTitleValue: healthBarsTitleArray[0].innerText,
       statusView: statusViewsArray[0],
-      position: 'left'
+      position: "left"
     };
-    
+
     const FighterTwo = {
-      ...secondFighter, 
-      ...gameStatus, 
-      healthBar: healthBarsArray[1], 
+      ...secondFighter,
+      ...gameStatus,
+      healthBar: healthBarsArray[1],
       healthBarValue: healthBarsTitleArray[1],
       healthBarTitleValue: healthBarsTitleArray[1].innerText,
       statusView: statusViewsArray[1],
-      position: 'left'
+      position: "left"
     };
 
     function fighterAttackHandler(attacker, defender) {
@@ -44,20 +44,20 @@ export async function fight(firstFighter, secondFighter) {
 
       defender.healthBar.style.width = `${defender.currentHealth}%`;
       defender.healthBarValue.innerText = defender.healthBarTitleValue.toFixed(1);
-      
 
-        defender.healthBarValue.style.color = '#ff0000';
-        defender.healthBar.style.backgroundColor = '#ff0000';
+
+        defender.healthBarValue.style.color = "#ff0000";
+        defender.healthBar.style.backgroundColor = "#ff0000";
         setTimeout(() => {
-          defender.healthBarValue.style.color = '#ebd759';
-          defender.healthBar.style.backgroundColor = '#ebd759';
+          defender.healthBarValue.style.color = "#ebd759";
+          defender.healthBar.style.backgroundColor = "#ebd759";
         }, 200)
 
       if(defender.currentHealth <= 0) {
-        document.removeEventListener('keyup', keyUp);
-        document.removeEventListener('keydown', keyDown);
-        defender.healthBar.style.width = '0%';
-        defender.healthBarValue.innerText = '0';
+        document.removeEventListener("keyup", keyUp);
+        document.removeEventListener("keydown", keyDown);
+        defender.healthBar.style.width = "0%";
+        defender.healthBarValue.innerText = "0";
         resolve(attacker);
       }
     }
@@ -75,19 +75,19 @@ export async function fight(firstFighter, secondFighter) {
         fighter.criticalDamageChecker = criticalChecker;
 
 
-        defender.healthBarValue.style.color = '#ff0000';
-        defender.healthBar.style.backgroundColor = '#ff0000';
+        defender.healthBarValue.style.color = "#ff0000";
+        defender.healthBar.style.backgroundColor = "#ff0000";
         setTimeout(() => {
-          defender.healthBarValue.style.color = '#ebd759';
-          defender.healthBar.style.backgroundColor = '#ebd759';
+          defender.healthBarValue.style.color = "#ebd759";
+          defender.healthBar.style.backgroundColor = "#ebd759";
         }, 700)
       }
 
       if(defender.currentHealth <= 0) {
-        document.removeEventListener('keyup', keyUp);
-        document.removeEventListener('keydown', keyDown);
-        defender.healthBar.style.width = '0%';
-        defender.healthBarValue.innerText = '0';
+        document.removeEventListener("keyup", keyUp);
+        document.removeEventListener("keydown", keyDown);
+        defender.healthBar.style.width = "0%";
+        defender.healthBarValue.innerText = "0";
         resolve(fighter);
       }
     }
@@ -103,7 +103,7 @@ export async function fight(firstFighter, secondFighter) {
         case controls.PlayerOneAttack:
           fighterAttackHandler(FighterOne, FighterTwo)
           break;
-        case controls.PlayerTwoAttack: 
+        case controls.PlayerTwoAttack:
           fighterAttackHandler(FighterTwo, FighterOne)
           break;
         case controls.PlayerOneBlock:
@@ -132,9 +132,8 @@ export async function fight(firstFighter, secondFighter) {
           break;
       }
     }
-    
-    document.addEventListener('keyup', keyUp);
-    document.addEventListener('keydown', keyDown);
+    document.addEventListener("keyup", keyUp);
+    document.addEventListener("keydown", keyDown);
 
   });
 }
