@@ -1,4 +1,5 @@
 import { controls } from '../../constants/controls';
+import { createElement } from '../helpers/domHelper';
 
 export async function fight(firstFighter, secondFighter) {
   return new Promise((resolve) => {
@@ -33,8 +34,18 @@ export async function fight(firstFighter, secondFighter) {
       healthBarValue: healthBarsTitleArray[1],
       healthBarTitleValue: healthBarsTitleArray[1].innerText,
       statusView: statusViewsArray[1],
-      position: "left"
+      position: "right"
     };
+
+    function showBlockingStatus(fighter) {
+      if(document.getElementById(`arena___health-status-${fighter.position}`)) return document.getElementById(`arena___health-status-${fighter.position}`).remove();
+        const healthBarContainer = document.getElementsByClassName("arena___fighter-indicator");
+        const healthBarContainerArray = [...healthBarContainer];
+        const element = createElement({tagName: "span", className: "arena___health-status", attributes: { id: `arena___health-status-${fighter.position}`}});
+        const position = fighter.position === "left" ? 0 : 1;
+        element.innerText = "Blocking";
+        healthBarContainerArray[position].append(element);
+    }
 
     function fighterAttackHandler(attacker, defender) {
       if(attacker.block || defender.block) return;
@@ -107,10 +118,12 @@ export async function fight(firstFighter, secondFighter) {
           fighterAttackHandler(FighterTwo, FighterOne)
           break;
         case controls.PlayerOneBlock:
-          FighterTwo.block = false;
+          FighterOne.block = false;
+          showBlockingStatus(FighterOne);
           break;
         case controls.PlayerTwoBlock:
           FighterTwo.block = false;
+          showBlockingStatus(FighterTwo);
           break;
       }
     }
@@ -125,10 +138,12 @@ export async function fight(firstFighter, secondFighter) {
       }
       switch(event.code) {
         case controls.PlayerOneBlock:
-          FighterTwo.block = true;
+          FighterOne.block = true;
+          showBlockingStatus(FighterOne);
           break;
         case controls.PlayerTwoBlock:
           FighterTwo.block = true;
+          showBlockingStatus(FighterTwo);
           break;
       }
     }

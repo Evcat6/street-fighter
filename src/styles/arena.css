@@ -65,7 +65,6 @@
 
 .arena___health-title {
   color: #ebd759;
-  text-align: end;
   width: 80%;
   margin-top: 5px;
   letter-spacing: 0.8px;
@@ -78,11 +77,29 @@
 }
 
 #left-arena___health-title {
-  display: flex;
-  justify-content: flex-start;
   text-align: start;
 }
 
-#left-arena___health-title #left {
+#right-arena___health-title {
+  text-align: end;
+}
+
+.arena___health-status {
+  font-size: 20px;
+  color: #ebd759;
+  text-align: end;
+  width: 80%;
+  margin-top: 3px;
+  -webkit-text-stroke: 1.3px black;
+  font-weight: 900;
+  font-family: 'Fredoka One';
+  font-weight: 400;
+}
+
+#arena___health-status-left {
+  text-align: start;
+}
+
+#arena___health-status-right {
   text-align: end;
 }
