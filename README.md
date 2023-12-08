@@ -1,4 +1,6 @@
-# JS for everyone
+# Street Fighter
+
+![example photo](./resources/example-photo.jpg)
 
 ## 🏃‍♂️ Simple start
 
@@ -10,4 +12,3 @@
 
 The project has a [Prettier](https://prettier.io/) set up, so use it to format the code
 
-## 🤞 Good luck
