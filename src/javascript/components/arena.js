@@ -10,9 +10,6 @@ export function renderArena(selectedFighters) {
   root.innerHTML = '';
   root.append(arena);
 
-  // todo:
-  // - start the fight
-  // - when fight is finished show winner
   fight(...selectedFighters).then((e) => showWinnerModal(e));
 }
 

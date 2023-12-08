@@ -1,13 +1,11 @@
 {
   "name": "street-fighter",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
     "start": "webpack-dev-server"
   },
-  "author": "",
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.16.0",

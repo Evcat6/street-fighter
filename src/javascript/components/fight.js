@@ -159,7 +159,6 @@ export function getDamage(attacker, defender) {
     return 0;
   }
   return damage;
-  // return damage
 }
 
 export function getHitPower(fighter) {
@@ -167,7 +166,6 @@ export function getHitPower(fighter) {
   const { attack } = fighter;
   const hitPower = attack * criticalHitChance;
   return hitPower;
-  // return hit power
 }
 
 export function getBlockPower(fighter) {
@@ -175,5 +173,4 @@ export function getBlockPower(fighter) {
   const dodgeChance = Math.random() + 1;
   const blockPower = defense * dodgeChance;
   return blockPower;
-  // return block power
 }
